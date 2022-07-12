@@ -1,0 +1,25 @@
+name: Docker Image CD Stage 1
+
+on:
+  workflow_dispatch:
+  push:
+    branches:                                                                                       
+        - "master"                                                                                  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2.4.2
+      repository: 'input-output-hk/cardano-node'
+      with:
+          fetch-depth: 0
+
+    - name: Get Latest Tag
+      uses: WyriHaximus/github-action-get-previous-tag@v1
+      id: previoustag
+
+    - name: Check the value of version
+      run: |
+        echo ${{ steps.previoustag.outputs.tag }}
