@@ -12,9 +12,9 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2.4.2
-      repository: 'input-output-hk/cardano-node'
       with:
           fetch-depth: 0
+          repository: 'input-output-hk/cardano-node'
 
     - name: Get Latest Tag
       uses: WyriHaximus/github-action-get-previous-tag@v1
